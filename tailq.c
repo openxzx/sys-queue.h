@@ -46,6 +46,7 @@ int main(int argc, const char *argv[])
 	puts("");  
 	/* 7. 删除data5 */  
 	TAILQ_REMOVE(&head, data5, tailq_entry);  
+	free(data5);	/* TAILQ_REMOVE宏只是从队列中删除该节点，因此还需手动free */
   
 	TAILQ_FOREACH(pdata, &head, tailq_entry) {  
 		printf("pdata->value1 = %d\n", pdata->value);       
